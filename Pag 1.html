@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NeuroFocus - A Revolução da Produtividade</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700&display=swap"
+        rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            background: #2b2157;
+            padding: 1rem 2rem;
+            box-shadow: 0 3px 8px rgb(0 0 0 / 0.3);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #fff;
+        }
+
+        nav ul {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: #d3d3ff;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: #9a80cc;
+            color: white;
+        }
+
+        /* Hero Section */
+        #hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 1rem;
+            text-align: center;
+            background: #3f2c7d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -30%;
+            left: -25%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 30%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0.6;
+            }
+        }
+
+        #hero .content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        #hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            color: #dcdcff;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #hero .btn-primary {
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(137, 94, 242, 0.7);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #hero .btn-primary:hover {
+            background-color: #9a80cc;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(137, 94, 242, 0.9);
+        }
+
+        /* Features */
+        #features {
+            background: #7367f0;
+            padding: 4rem 1rem;
+            color: white;
+        }
+
+        #features h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+
+        .feature-list {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.25rem;
+            background: rgba(255 255 255 / 0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255 255 255 / 0.3);
+        }
+
+        .feature-item svg {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            color: #cebaff;
+        }
+
+        /* Testimonials */
+        #testimonials {
+            background: #5a4da7;
+            padding: 4rem 1rem;
+            color: white;
+        }
+
+        #testimonials h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            padding: 2rem;
+            color: #f0e6ff;
+            font-style: italic;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .testimonial-author {
+            margin-top: 1.5rem;
+            color: #d7c7ff;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        /* Plans Section */
+        #plans {
+            background: #3b2e6c;
+            padding: 4rem 1rem;
+            color: white;
+        }
+
+        #plans h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        }
+
+        .table thead {
+            background: #584caf;
+            color: #f0e6ff;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .table tbody tr {
+            background: #4f3e9c;
+            transition: background-color 0.3s ease;
+        }
+
+        .table tbody tr:hover {
+            background: #6957c4;
+        }
+
+        .table td, .table th {
+            vertical-align: middle;
+            text-align: center;
+            border: none;
+        }
+
+        #plans .btn-primary {
+            margin-top: 1.5rem;
+            display: block;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(137, 94, 242, 0.7);
+            padding: 0.75rem 1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #plans .btn-primary:hover {
+            background-color: #9a80cc;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(137, 94, 242, 0.9);
+        }
+
+        /* Call to Action Section */
+        #cta {
+            background: #4e3ca1;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: white;
+        }
+
+        #cta .btn {
+            font-weight: 700;
+            font-size: 1.5rem;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(150, 110, 230, 0.8);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #cta .btn:hover {
+            background-color: #9a80cc;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #241b44;
+            color: #ddd;
+            padding: 1em 2em;
+            font-size: 0.9rem;
+            text-align: center;
+            user-select: none;
+        }
+
+        footer a {
+            color: #a88eff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #d6c3ff;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .feature-list {
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .feature-item {
+                flex: 1 1 30%;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #testimonials .row {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">NeuroFocus</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero" class="active">Início</a></li>
+                    <li><a href="#features">Funcionalidades</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
+                    <li><a href="#plans">Planos</a></li>
+                    <li><a href="#cta">Comece Agora</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" aria-label="Apresentação do NeuroFocus">
+        <div class="container content">
+            <h1>NeuroFocus</h1>
+            <p>Trilhas sonoras baseadas em <strong>neurociência</strong> para <em>foco</em> e <em>produtividade</em> máximos.</p>
+            <a href="#plans" class="btn btn-primary" role="button" aria-label="Experimente grátis">Experimente grátis</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" aria-label="Funcionalidades e benefícios">
+        <div class="container">
+            <h2>Funcionalidades que Transformam Seu Dia</h2>
+            <div class="feature-list" role="list">
+                <div class="feature-item" role="listitem" tabindex="0">
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M12 2a10 10 0 1 0 10 10A10.01142 10.01142 0 0 0 12 2Zm1 14h-2v-2h2Zm0-4h-2V7h2Z" />
+                    </svg>
+                    <span>Melhore sua concentração com sons cientificamente comprovados</span>
+                </div>
+                <div class="feature-item" role="listitem" tabindex="0">
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M15.5 14h-1.5V9h-2v5H10v2h5.5a.5.5 0 0 0 0-1Z" />
+                    </svg>
+                    <span>Aumente sua produtividade com playlists personalizadas</span>
+                </div>
+                <div class="feature-item" role="listitem" tabindex="0">
+                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M12 3a9 9 0 1 1-9 9 9.01056 9.01056 0 0 1 9-9Z" />
+                    </svg>
+                    <span>Trilhas ajustadas ao seu estilo e momento do dia</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" aria-label="Depoimentos dos usuários">
+        <div class="container">
+            <h2>O que nossos usuários dizem</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <article class="testimonial-card" tabindex="0" aria-label="Depoimento do Usuário 1">
+                        <p>“O NeuroFocus mudou completamente a minha rotina de trabalho. Estou mais focado e menos estressado!”</p>
+                        <p class="testimonial-author">– Ana S.</p>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="testimonial-card" tabindex="0" aria-label="Depoimento do Usuário 2">
+                        <p>“As trilhas sonoras são incríveis e ajudam muito a manter a concentração no que importa.”</p>
+                        <p class="testimonial-author">– Carlos M.</p>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="testimonial-card" tabindex="0" aria-label="Depoimento do Usuário 3">
+                        <p>“Recomendo o NeuroFocus para qualquer pessoa que precise potencializar seu dia a dia.”</p>
+                        <p class="testimonial-author">– Júlia R.</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" aria-label="Planos e preços">
+        <div class="container">
+            <h2>Escolha seu Plano</h2>
+            <div class="table-responsive">
+                <table class="table text-white align-middle">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Plano</th>
+                            <th class="text-center">Preço</th>
+                            <th>Recursos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center fs-5 fw-semibold">Grátis</td>
+                            <td class="text-center fs-5 fw-semibold">R$0</td>
+                            <td>Acesso limitado às trilhas básicas</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center fs-5 fw-semibold">Pro</td>
+                            <td class="text-center fs-5 fw-semibold">R$29,90/mês</td>
+                            <td>Acesso completo + playlists customizadas + suporte standard</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center fs-5 fw-semibold">Premium</td>
+                            <td class="text-center fs-5 fw-semibold">R$49,90/mês</td>
+                            <td>Todos os recursos + suporte prioritário + novidades exclusivas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="#cta" class="btn btn-primary" aria-label="Comece agora">Comece agora</a>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="cta" aria-label="Chamada para ação principal">
+        <div class="container">
+            <h2>Pronto para transformar sua produtividade?</h2>
+            <a href="#plans" class="btn btn-lg btn-primary" role="button" aria-label="Ver planos">Ver planos</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer aria-label="Rodapé com informações de contato e redes sociais">
+        <div class="container">
+            <p>Contato: <a href="mailto:contato@neurofocus.com">contato@neurofocus.com</a></p>
+            <p>
+                Siga-nos:
+                <a href="https://facebook.com/neurofocus" target="_blank" rel="noopener noreferrer">Facebook</a> |
+                <a href="https://instagram.com/neurofocus" target="_blank" rel="noopener noreferrer">Instagram</a> |
+                <a href="https://twitter.com/neurofocus" target="_blank" rel="noopener noreferrer">Twitter</a>
+            </p>
+            <p>&copy; 2023 NeuroFocus. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
